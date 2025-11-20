@@ -21,6 +21,8 @@ setup(
         'console_scripts': [
             'uwb_read_only_node = uwb_ro_bridge.reader:main',
             'uwb_read_only_node_launch = uwb_ro_bridge.runner:main',
+            'uwb_odom_broadcaster = uwb_ro_bridge.uwb_odom_broadcaster:main',
+	
 
         ],
     },
