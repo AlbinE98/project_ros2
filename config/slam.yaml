@@ -1,14 +1,33 @@
 slam_toolbox:
   ros__parameters:
-    mode: mapping
-    map_frame: map
-    odom_frame: odom
-    base_frame: base_link
-    scan_topic: /scan
+    use_sim_time: false
+    mode: "mapping"
 
-    use_odom: false          # no wheel odom
-    use_imu: false
+    # Frames: match your TF tree
+    map_frame: "map"
+    odom_frame: "odom"
+    base_frame: "base_link"
+
+    # Laser
+    scan_topic: "/scan"
+    max_laser_range: 12.0
+    resolution: 0.05
+
+    # Odometry from UWB (odom -> base_link)
+    use_odometry: true
+    provide_odom_frame: false
     use_scan_matching: true
-    resolution: 0.05         # map resolution (m/cell)
+
+    # Keyframe thresholds (small so it actually adds keyframes)
+    minimum_travel_distance: 0.05
+    minimum_travel_heading: 0.05
+
+    # TF & map update timing
+    transform_timeout: 0.5
+    tf_buffer_duration: 30.0
     transform_publish_period: 0.02
+    map_update_interval: 1.0
+
+    # Solver
+    solver_plugin: "solver_plugins::CeresSolver"
 

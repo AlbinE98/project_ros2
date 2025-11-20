@@ -9,7 +9,13 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', ['launch/uwb_ro_bridge.launch.py']),
+        ('share/' + package_name + '/launch', [
+            'launch/uwb_ro_bridge.launch.py',
+            'launch/room_mapping_bringup.launch.py',
+        ]),
+        ('share/' + package_name + '/config', [
+            'config/slam.yaml',
+        ]),
     ],
     install_requires=['setuptools', 'pyserial'],
     zip_safe=True,
@@ -22,8 +28,6 @@ setup(
             'uwb_read_only_node = uwb_ro_bridge.reader:main',
             'uwb_read_only_node_launch = uwb_ro_bridge.runner:main',
             'uwb_odom_broadcaster = uwb_ro_bridge.uwb_odom_broadcaster:main',
-	
-
         ],
     },
 )
